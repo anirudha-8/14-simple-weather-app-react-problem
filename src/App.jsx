@@ -6,23 +6,30 @@ function App() {
 	const [weatherData, setWeatherData] = useState(null);
 
 	useEffect(() => {
-		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition((position) => {
-				const latitude = position.coords.latitude;
-				const longitude = position.coords.longitude;
-
-				fetch(
-					`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${
-						import.meta.env.VITE_WEATHER_API_KEY
-					}&units=metric`
-				)
-					.then((res) => res.json())
-					.then((data) => {
-						setWeatherData(data);
-						console.log(data);
-					});
-			});
+		if (!navigator.geolocation) {
+			alert("Geolocation is not supported by your browser");
+			return;
 		}
+		navigator.geolocation.getCurrentPosition((position) => {
+			const latitude = position.coords.latitude;
+			const longitude = position.coords.longitude;
+			const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
+
+			fetch(
+				`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`
+			)
+				.then((res) => {
+					if (!res.ok) throw new Error("Failed to fetch the data!");
+					return res.json();
+				})
+				.then((data) => {
+					setWeatherData(data);
+					console.log(data);
+				})
+				.catch((error) => {
+					alert(error.message);
+				});
+		});
 	}, []);
 
 	return (
