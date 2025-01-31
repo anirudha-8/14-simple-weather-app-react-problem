@@ -28,6 +28,19 @@ function App() {
 	return (
 		<div>
 			<h1>My Weather Forecast</h1>
+			<div>
+				{weatherData ? (
+					<div>
+						<h2>Your Location: {weatherData.name}</h2>
+						<p>Temperature: {weatherData.main.temp} Fr</p>
+						<p>Humidity: {weatherData.main.humidity}</p>
+						<p>Pressure: {weatherData.main.pressure}</p>
+						<p>Wind: {weatherData.wind.speed} km/hr</p>
+					</div>
+				) : (
+					<p>Loading...</p>
+				)}
+			</div>
 		</div>
 	);
 }
