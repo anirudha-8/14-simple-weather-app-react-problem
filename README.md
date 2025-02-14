@@ -2,7 +2,7 @@
 
 ## ==> [Link to all problem set](https://github.com/anirudha-8/react.js-practical-problems.git)
 
-## ==> [🔥Live Demo](https://14-weather-app.vercel.app/)
+## ==> [🔥Live Demo](https://14-simple-weather-app-react-problem.vercel.app/)
 
 Welcome to the **fourteenth problem** of the React 30+ Practical Problems series! In this challenge, we will develop a weather application that fetches and displays real-time weather information based on the user's location.
 
@@ -17,8 +17,11 @@ Build a React application that fetches weather data based on the user's location
 Create a React weather application with the following functionalities:
 
 - **Automatically detect the user's location** using the browser's Geolocation API.
+
 - **Fetch weather data** from an API (e.g., OpenWeatherMap API).
+
 - Display **temperature, humidity, wind speed, and weather condition**.
+
 - Handle **loading and error states** effectively.
 
 ---
